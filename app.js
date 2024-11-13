@@ -10,6 +10,7 @@ app.set('views', viewsPath);
 app.set('view engine', 'ejs');
 
 app.use(express.static(staticPath));
+app.use(express.urlencoded({extended: true}))
 
 const messages = [
   {
@@ -33,6 +34,17 @@ const formatDate = require("./helpers/formatDate");
 
 app.get('/', (req, res) => {
   res.render('index', {title: 'Mini Messageboard', messages, formatDate});
+})
+
+app.get('/new', (req, res) => {
+  res.render('form', {title: 'Form'});
+})
+
+app.post('/new', (req, res) => {
+  const {user, text} = req.body;
+  const added = new Date();
+  messages.push({user, text, added});
+  res.redirect('/');
 })
 
 const PORT = 3000;

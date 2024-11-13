@@ -5,12 +5,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
+  <%- include('reset.ejs') %>
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <ul>
-    <% messages.forEach(message => { %>
-        <li><%= message.user + ", " + formatDate(message.added) + ": " + message.text %></li>
-    <% }) %>
-  </ul>
+  <button class="add-msg"><a href="/new">Add New</a></button>
+  <div>
+    <div class="messages">
+      <% messages.forEach(message => { %>
+            <div class="message">
+              <h3><%= message.user + ", " + formatDate(message.added) %> </h3>
+              <p><%= message.text %></p>
+            </div>
+      <% }) %>
+    </div>
+  </div>
 </body>
 </html>

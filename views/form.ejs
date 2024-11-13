@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%- title %></title>
+  <%- include('reset.ejs') %>
+  <link rel="stylesheet" href="form.css">
+</head>
+<body>
+  <form method="POST" action="/new" >
+    <label for="user">
+      User
+      <input type="text" name="user" id="user">
+    </label>
+    <label for="text">
+      Message Text
+      <input type="text" name="text" id="text">
+    </label>
+    <button type="submit">Add</button>
+  </form>
+</body>
+</html>
